@@ -1,0 +1,15 @@
+@import './base.css';
+
+:root {
+  --linkColor: #fb8332;
+  --bgColor: #394867;
+  --secBgColor: #9BA4B5;
+  --textColor: #F1F6F9;
+}
+
+
+#app {
+
+  font-weight: normal;
+  overflow-x: hidden;
+}

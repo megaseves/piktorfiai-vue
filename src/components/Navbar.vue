@@ -1,0 +1,51 @@
+<template>
+  <div class="container">
+      <h2 class="title">Piktor Fiai bt.</h2>
+
+      <div class="menu">
+          <div class="menu-btn">Rólunk</div>
+          <div class="menu-btn">Galéria</div>
+          <div class="menu-btn">Elérhetőség</div>
+      </div>
+  </div>
+</template>
+
+<script>
+export default {
+    name: "Navbar"
+}
+</script>
+
+<style scoped>
+.container {
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 5vw 8.2vw;
+    align-items: center;
+}
+.title {
+    font-size: 1.8vw;
+    color: var(--textColor);
+}
+.title:hover {
+    cursor: pointer;
+}
+.menu {
+    display: flex;
+    gap: 3vw;
+}
+.menu-btn {
+    padding: 0.5vw 1.7vw;
+    border-radius: 0.5vw;
+    font-size: 1.4vw;
+}
+.menu-btn:hover {
+    background-color: #e5e5e5;
+    cursor: pointer;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
+    color: rgba(0, 0, 0, 0.65);
+}
+</style>
