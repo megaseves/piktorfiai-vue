@@ -1,10 +1,14 @@
 @import './base.css';
-
+* {
+  box-sizing: border-box;
+}
 :root {
   --linkColor: #fb8332;
   --bgColor: #394867;
   --secBgColor: #9BA4B5;
   --textColor: #F1F6F9;
+  --card-height: 10vh;
+  --card-width: 10vw;
 }
 
 

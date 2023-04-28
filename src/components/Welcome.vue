@@ -14,10 +14,19 @@
             </div>
 
             <div class="container-image">
-                <div class="hover-container" @mouseover="increaseTop" @mouseleave="decreaseTop" @click="goToGallery" >
+
+            </div>
+            <div class="card-container">
+              <div class="card">
+                  <div class="wrapper">
+                      <img src="/welcomeImage.jpg" class="cover-image" alt="picture-cover" />
+                  </div>
+                      <img src="/welcomeImage2.png" class="threeD" alt="picture" />
+            </div>
+<!--                <div class="hover-container" @mouseover="increaseTop" @mouseleave="decreaseTop" @click="goToGallery" >
                     <div class="image-bottom-border"></div>
-                    <img class="image-link" :style="{top: top + 'vw'}" src="/proba.jpg" alt="building1">
-                </div>
+                    <img class="image-link" :style="{top: top + 'vw'}" src="/welcomeImage.jpg" alt="building1">
+                </div>-->
             </div>
         </div>
 
@@ -83,7 +92,7 @@ export default {
 }
 .container {
     display: flex;
-
+    width: 100%;
 }
 .container-header {
     width: 50vw;
@@ -179,19 +188,20 @@ export default {
 
 .container-image {
     width: 50vw;
+    height: 50vh;
     padding-left: 7vw;
 }
-.container-image img {
+/*.container-image img {
     width: 35vw;
     border-radius: 1vw;
     box-shadow: 3px 4px 22px -1px rgba(0,0,0,0.47);
     -webkit-box-shadow: 3px 4px 22px -1px rgba(0,0,0,0.47);
     -moz-box-shadow: 3px 4px 22px -1px rgba(0,0,0,0.47);
-}
+}*/
 
 .hover-container {
     cursor: pointer;
-
+    width: 35vw;
 }
 
 .image-link {
@@ -240,4 +250,31 @@ export default {
 .point-active {
     background-color: #fa6400;
 }*/
+
+/*3D CARD*/
+
+.card-container {
+    width: 40vw;
+    position: absolute;
+    top: 3vw;
+    right: 0;
+}
+.cover-image {
+    width: 80%;
+    z-index: 1;
+    position: absolute;
+    transform: perspective(30vw) translateY(-10%) translateX(-10%) rotateX(45deg) translateZ(0);
+    box-shadow:  0.3vw 1vw 2vw -0.5vw rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0.3vw 1vw 2vw -0.5vw rgba(0, 0, 0, 0.75);
+    -moz-box-shadow:  0.3vw 1vw 2vw -0.5vw rgba(0, 0, 0, 0.75);
+}
+
+.threeD {
+    width: 95%;
+    position: absolute;
+    z-index: 2;
+    transform: translate3d(-19%, -20%, 0);
+}
+
+
 </style>
