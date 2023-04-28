@@ -21,8 +21,8 @@
                   <div class="wrapper">
                       <img src="/welcomeImage.jpg" class="cover-image" alt="picture-cover" />
                   </div>
-                      <img src="/welcomeImage2.png" class="threeD" alt="picture" />
-            </div>
+                  <img src="/welcomeImage2.png" class="threeD" alt="picture" />
+              </div>
 <!--                <div class="hover-container" @mouseover="increaseTop" @mouseleave="decreaseTop" @click="goToGallery" >
                     <div class="image-bottom-border"></div>
                     <img class="image-link" :style="{top: top + 'vw'}" src="/welcomeImage.jpg" alt="building1">
@@ -55,12 +55,6 @@ export default {
         }
     },
     methods: {
-        increaseTop() {
-            this.top = -0.6;
-        },
-        decreaseTop() {
-            this.top = 0;
-        },
         goToGallery() {
             window.location.href = 'https://www.google.com/';
         }
@@ -138,7 +132,7 @@ export default {
     padding: 1vw 1.4vw;
     position: relative;
     text-decoration: none;
-    /*transition: all 250ms;*/
+    transition: all 250ms;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;

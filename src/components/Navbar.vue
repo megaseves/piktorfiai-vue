@@ -37,15 +37,12 @@ export default {
     gap: 3vw;
 }
 .menu-btn {
-    padding: 0.5vw 1.7vw;
+    padding: 0.5vw 2vw;
     border-radius: 0.5vw;
     font-size: 1.4vw;
 }
 .menu-btn:hover {
     background-color: #e5e5e5;
     cursor: pointer;
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px;
-    color: rgba(0, 0, 0, 0.65);
 }
 </style>
