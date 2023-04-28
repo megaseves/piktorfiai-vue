@@ -14,7 +14,10 @@
             </div>
 
             <div class="container-image">
-                <img class="image-link" src="/proba.jpg" alt="building1">
+                <div class="hover-container" @mouseover="increaseTop" @mouseleave="decreaseTop" @click="goToGallery" >
+                    <div class="image-bottom-border"></div>
+                    <img class="image-link" :style="{top: top + 'vw'}" src="/proba.jpg" alt="building1">
+                </div>
             </div>
         </div>
 
@@ -36,7 +39,23 @@
 
 <script>
 export default {
-    name: "Welcome"
+    name: "Welcome",
+    data() {
+        return {
+            top: 0
+        }
+    },
+    methods: {
+        increaseTop() {
+            this.top = -0.6;
+        },
+        decreaseTop() {
+            this.top = 0;
+        },
+        goToGallery() {
+            window.location.href = 'https://www.google.com/';
+        }
+    }
 }
 </script>
 
@@ -75,17 +94,7 @@ export default {
     align-items: center;
     padding: 2vw 0 0 8vw;
 }
-.container-image {
-    width: 50vw;
-    padding-left: 7vw;
-}
-.container-image img {
-    width: 35vw;
-    border-radius: 1vw;
-    box-shadow: 3px 4px 22px -1px rgba(0,0,0,0.47);
-    -webkit-box-shadow: 3px 4px 22px -1px rgba(0,0,0,0.47);
-    -moz-box-shadow: 3px 4px 22px -1px rgba(0,0,0,0.47);
-}
+
 
 /*
 .phone {
@@ -168,14 +177,37 @@ export default {
     cursor: pointer;
 }
 
+.container-image {
+    width: 50vw;
+    padding-left: 7vw;
+}
+.container-image img {
+    width: 35vw;
+    border-radius: 1vw;
+    box-shadow: 3px 4px 22px -1px rgba(0,0,0,0.47);
+    -webkit-box-shadow: 3px 4px 22px -1px rgba(0,0,0,0.47);
+    -moz-box-shadow: 3px 4px 22px -1px rgba(0,0,0,0.47);
+}
+
+.hover-container {
+    cursor: pointer;
+
+}
+
 .image-link {
     cursor: pointer;
     transition: all 200ms;
     top: 0;
 }
-.image-link:hover {
-    top: -0.2vw;
+
+.image-bottom-border {
+    width: 35vw;
+    height: 100%;
+    border-radius: 1vw;
+    background-color: var(--linkColor);
+    position: absolute;
 }
+
 /*
 .footer {
     width: 100vw;
