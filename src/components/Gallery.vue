@@ -1,26 +1,31 @@
 <template>
-    <div class="show-big-picture hidden" @click="closeBigPicture">
+    <div class="show-big-picture hidden" @click="closeBigPicture" >
+        <div class="stepControl">
+            <div class="stepBack" @click.stop><font-awesome-icon class="icon" :icon="['fas', 'chevron-left']" @click="skipBackImage" /></div>
+            <div class="stepForward" @click.stop><font-awesome-icon class="icon" :icon="['fas', 'chevron-right']" @click="skipForwardImage" /></div>
+        </div>
+
         <div class="picture-container">
-            <img v-bind:src="imageUrl" alt="image1">
+            <img v-bind:src="imageUrls[imageIndex]" alt="image">
         </div>
     </div>
   <div id="gallery" class="container">
 
       <div class="gallery-container">
 
-          <div class="image-card" @click="showBigPicture('/gallery/image1.jpg')">
+          <div class="image-card" @click="showBigPicture(0)">
               <div class="image-detail">
                   <h4>Megtekintés</h4>
               </div>
               <img src="/gallery/image1.jpg" alt="image1">
           </div>
-          <div class="image-card" @click="showBigPicture('/gallery/image2.jpg')">
+          <div class="image-card" @click="showBigPicture(1)">
               <div class="image-detail">
                   <h4>Megtekintés</h4>
               </div>
               <img src="/gallery/image2.jpg" alt="image2">
           </div>
-          <div class="image-card" @click="showBigPicture('/gallery/image3.jpg')">
+          <div class="image-card" @click="showBigPicture(2)">
               <div class="image-detail">
                 <h4>Megtekintés</h4>
               </div>
@@ -32,31 +37,78 @@
 </template>
 
 <script>
-import {ref} from "vue";
+import {ref, watchEffect} from "vue";
 
 export default {
+    data() {
+      return {
+          imageUrls: ['/gallery/image1.jpg', '/gallery/image2.jpg', '/gallery/image3.jpg']
+      }
+    },
     setup() {
-        const imageUrl = ref('');
-        //watchEffect(() => console.log(imageUrl.value));
+        const imageIndex = ref(0);
+        //watchEffect(() => this.checkIndexForIconDesign());
         return {
-            imageUrl,
+            imageIndex,
         }
     },
     name: "Gallery",
     methods: {
-        showBigPicture(url) {
+        showBigPicture(index) {
+            const stepForward = document.querySelector('.stepForward');
+            const stepBack = document.querySelector('.stepBack');
+
             const bigPicture = document.querySelector('.show-big-picture');
             if (bigPicture.classList.contains('hidden')) {
-                this.imageUrl = url;
+                this.imageIndex = index;
                 bigPicture.classList.remove('hidden');
             }
         },
-        closeBigPicture() {
+
+
+        checkIndexForIconDesign() {
+            const stepForward = document.querySelector('.stepForward');
+            const stepBack = document.querySelector('.stepBack');
+
+            if(this.imageIndex === 0) {
+                stepBack.children[0].classList.add('last-skip-icon');
+            } else {
+                stepBack.children[0].classList.remove('last-skip-icon');
+            }
+        },
+
+
+        closeBigPicture(event) {
+            const stepForward = document.querySelector('.stepForward');
             const bigPicture = document.querySelector('.show-big-picture');
-            if (!bigPicture.classList.contains('hidden')) {
+            if (!bigPicture.classList.contains('hidden') && !this.isDescendant(stepForward, event.target)) {
                 bigPicture.classList.add('hidden');
             }
-        }
+        },
+        isDescendant(parent, child) {
+            let node = child.parentNode;
+            while (node != null) {
+                if (node === parent) {
+                    return true;
+                }
+                node = node.parentNode;
+            }
+            return false;
+        },
+        skipForwardImage() {
+            if(this.imageIndex === this.imageUrls.length-1) {
+                this.imageIndex = 0;
+            } else {
+                this.imageIndex++;
+            }
+        },
+        skipBackImage() {
+            if(this.imageIndex === 0) {
+                this.imageIndex = this.imageUrls.length-1;
+            } else {
+                this.imageIndex--;
+            }
+        },
     }
 }
 </script>
@@ -147,10 +199,22 @@ export default {
     align-items: center;
 }
 .show-big-picture img {
+    max-width: 80vw;
     max-height: 90vh;
     box-shadow: 0.4vw 0.8vw 3vw -1vw rgba(0,0,0,2);
     -webkit-box-shadow: 0.4vw 0.8vw 3vw -1vw rgba(0,0,0,2);
     -moz-box-shadow: 0.4vw 0.8vw 3vw -1vw rgba(0,0,0,2);
+}
+
+.stepControl {
+    width: 91vw;
+    height: 10vh;
+    position: absolute;
+    z-index: 10;
+    /*border: 1px solid red;*/
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 
@@ -181,6 +245,20 @@ export default {
 
 .hidden {
     display: none;
+}
+
+.icon {
+    font-size: 4vw;
+    color: var(--secBgColor);
+    opacity: 0.8;
+    cursor: pointer;
+}
+.icon:hover {
+    color: white;
+}
+
+.last-skip-icon {
+    color: #c85000;
 }
 
 </style>
