@@ -4,7 +4,7 @@
 
       <div class="menu">
           <div class="menu-btn">Rólunk</div>
-          <div class="menu-btn">Galéria</div>
+          <div class="menu-btn" @click="$emit('scroll-to-gallery')" >Galéria</div>
           <div class="menu-btn">Elérhetőség</div>
       </div>
   </div>
@@ -12,7 +12,8 @@
 
 <script>
 export default {
-    name: "Navbar"
+    name: "Navbar",
+
 }
 </script>
 
