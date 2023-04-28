@@ -1,6 +1,7 @@
 <script setup>
 import Navbar from "@/components/Navbar.vue";
 import Welcome from "@/components/Welcome.vue";
+import Gallery from "@/components/Gallery.vue";
 </script>
 
 <template>
@@ -14,7 +15,8 @@ import Welcome from "@/components/Welcome.vue";
   </header>
 
   <main>
-    <Welcome />
+      <Welcome />
+      <Gallery />
   </main>
 
 </template>
@@ -24,10 +26,6 @@ import Welcome from "@/components/Welcome.vue";
 .background {
     width: 300vw;
     height: 100vh;
-/*    background-image: url("/bg.jpg");
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;*/
     background-color: var(--bgColor);
     position: absolute;
     transform: rotate(-140deg);

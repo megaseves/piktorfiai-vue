@@ -65,7 +65,7 @@ export default {
 <style scoped>
 .welcome-container {
     width: 100vw;
-    min-height: 80vh;
+    margin-bottom: 12vw;
     padding: 1vw 2vw;
     display: flex;
     flex-direction: column;
