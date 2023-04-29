@@ -7,7 +7,9 @@ import Gallery from "@/components/Gallery.vue";
 
 <template>
     <header>
-      <div class="background"></div>
+
+        <div class="background"></div>
+
       <div class="navbar">
         <Navbar @scroll-to-gallery="scrollToGallery" />
       </div>
@@ -36,6 +38,11 @@ export default {
 
 <style scoped>
 
+
+.bg {
+    display: none;
+}
+
 .background {
     width: 300vw;
     height: 100vh;
@@ -44,6 +51,45 @@ export default {
     transform: rotate(-140deg);
     top: 0;
     left: -120vw;
+}
+
+
+/*TABLET VIEW*/
+@media screen and (max-width: 1300px) {
+    .background {
+        display: none;
+    }
+    .bg {
+        display: block;
+    }
+
+    #wave {
+        //border: 1px solid red;
+    }
+    .curved {
+        color: black;
+        text-align: center;
+        position: absolute;
+        background-color: white;
+
+        width: 100%;
+        top: 65vh;
+    }
+
+    .curved svg {
+        display: block;
+        width: 100%;
+        height: 30vh;
+
+    }
+    .curvedBg {
+        background-color: var(--bgColor);
+        width: 100%;
+        height: 65vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }
 
 </style>

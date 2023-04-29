@@ -46,4 +46,24 @@ export default {
     background-color: #e5e5e5;
     cursor: pointer;
 }
+
+
+
+/*TABLET VIEW*/
+@media screen and (max-width: 1300px) {
+    .container {
+        background-color: white;
+    }
+    .title {
+        font-size: 3vw;
+        color: var(--bgColor);
+    }
+
+    .menu-btn {
+        padding: 2vw;
+        border-radius: 0.5vw;
+        font-size: 2vw;
+    }
+}
+
 </style>
