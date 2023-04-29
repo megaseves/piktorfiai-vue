@@ -14,17 +14,28 @@
       <div class="gallery-container">
 
 
-          <div v-for="(image, index) in imageUrls.slice(0, sliceIndex)" :key="index" v-bind:class="index === 2 || index === 3 || index === 12 || index === 13 ? 'image-card twoSpace' : 'image-card'" @click="showBigPicture(index)">
+          <div v-if="!isSmallScreen" v-for="(image, index) in imageUrls.slice(0, sliceIndex)" :key="index" v-bind:class="index === 2 || index === 3 || index === 12 || index === 13 ? 'image-card twoSpace' : 'image-card'" @click="showBigPicture(index)">
               <div class="image-detail">
                   <h4>Megtekintés</h4>
               </div>
               <img :src="image" :alt="'image' + (index+1)">
           </div>
 
+          <div v-if="isSmallScreen" v-for="(image, index) in imageUrls.slice(0, smallScreenSliceIndex)" :key="index" v-bind:class="index === 1 || index === 2 ? 'image-card twoSpace' : 'image-card'" @click="showBigPicture(index)">
+              <div class="image-detail">
+                  <h4>Megtekintés</h4>
+              </div>
+              <img :src="image" :alt="'image' + (index+1)">
+          </div>
+
+
+
+
       </div>
       <button class="show-all-list" @click="showAllImage">Összes megtekintése</button>
       <button class="show-all-list close-btn hidden" @click="closeAllImage"><font-awesome-icon :icon="['fas', 'chevron-up']" /></button>
   </div>
+
 </template>
 
 <script>
@@ -34,7 +45,9 @@ export default {
     data() {
       return {
           imageUrls: ['/gallery/image1.jpg', '/gallery/image2.jpg', '/gallery/image3.jpg', '/gallery/image4.jpg', '/gallery/image5.jpg', '/gallery/image8.jpg', '/gallery/image9.jpg', '/gallery/image10.jpg', '/gallery/image11.jpg', '/gallery/image12.jpg', '/gallery/image13.jpg', '/gallery/image14.jpg', '/gallery/image15.jpg', '/gallery/image16.jpg', '/gallery/image17.jpg', '/gallery/image18.jpg', '/gallery/image19.jpg', '/gallery/image20.jpg', '/gallery/image21.jpg', '/gallery/image22.jpg'],
-          sliceIndex: 6
+          sliceIndex: 6,
+          smallScreenSliceIndex: 4,
+          isSmallScreen: false
       }
     },
     setup() {
@@ -45,6 +58,13 @@ export default {
         }
     },
     name: "Gallery",
+    created() {
+        window.addEventListener('resize', this.handleResize)
+        this.handleResize()
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.handleResize)
+    },
     methods: {
         showBigPicture(index) {
 
@@ -105,6 +125,7 @@ export default {
             showAllButton.classList.add('hidden');
             closeButton.classList.remove('hidden');
             this.sliceIndex = this.imageUrls.length-1 + 1;
+            this.smallScreenSliceIndex = this.imageUrls.length-1;
 
         },
         closeAllImage() {
@@ -113,7 +134,11 @@ export default {
             showAllButton.classList.remove('hidden');
             closeButton.classList.add('hidden');
             this.sliceIndex = 6;
+            this.smallScreenSliceIndex = 4;
         },
+        handleResize() {
+            this.isSmallScreen = window.innerWidth < 1300
+        }
 
     }
 }
@@ -138,7 +163,7 @@ export default {
 }
 .image-card {
     width: 20vw;
-    height: 38vh;
+    max-height: 38vh;
     background-color: white;
     //border: 1px solid pink;
     box-shadow: 6px 6px 16px -6px rgba(0,0,0,0.59);
@@ -303,6 +328,53 @@ export default {
 }
 .hidden {
     display: none;
+}
+
+/*TABLET VIEW*/
+@media screen and (max-width: 1300px) {
+    .gallery-container {
+        width: 86vw;
+    //border: 1px solid red;
+        display: flex;
+        gap: 1vw;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .image-card {
+
+        max-height: 40vh;
+        flex-basis: 30%;
+    }
+
+    .image-card img {
+        width: 100%;
+        height: 42vh;
+    }
+    .twoSpace {
+        flex-basis: 61%;
+    }
+    .show-all-list {
+        margin-top: 2vw;
+        font-size: 1.8vw;
+        padding: 1.5vw 2vw;
+    }
+}
+/*TABLET VIEW*/
+@media screen and (max-width: 930px) {
+    .image-card {
+
+        max-height: 28vh;
+        flex-basis: 30%;
+    }
+
+    .image-card img {
+        width: 100%;
+        height: 30vh;
+    }
+    .twoSpace {
+        flex-basis: 61%;
+    }
+
 }
 
 </style>

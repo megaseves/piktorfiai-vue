@@ -64,6 +64,9 @@ export default {
         border-radius: 0.5vw;
         font-size: 2vw;
     }
+    .menu-btn:hover {
+        color: var(--bgColor);
+    }
 }
 
 </style>
