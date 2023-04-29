@@ -21,25 +21,6 @@
               <img :src="image" :alt="'image' + (index+1)">
           </div>
 
-<!--          <div class="image-card" @click="showBigPicture(0)">
-              <div class="image-detail">
-                  <h4>Megtekintés</h4>
-              </div>
-              <img src="/gallery/image1.jpg" alt="image1">
-          </div>
-          <div class="image-card" @click="showBigPicture(1)">
-              <div class="image-detail">
-                  <h4>Megtekintés</h4>
-              </div>
-              <img src="/gallery/image2.jpg" alt="image2">
-          </div>
-          <div class="image-card" @click="showBigPicture(2)">
-              <div class="image-detail">
-                    <h4>Megtekintés</h4>
-              </div>
-              <img src="/gallery/image3.jpg" alt="image3">
-          </div>-->
-
       </div>
       <button class="show-all-list" @click="showAllImage">Összes megtekintése</button>
       <button class="show-all-list close-btn hidden" @click="closeAllImage"><font-awesome-icon :icon="['fas', 'chevron-up']" /></button>

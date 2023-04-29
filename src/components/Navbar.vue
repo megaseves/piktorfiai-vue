@@ -52,11 +52,11 @@ export default {
 /*TABLET VIEW*/
 @media screen and (max-width: 1300px) {
     .container {
-        background-color: white;
+        background-color: var(--bgColor);
+        color: white;
     }
     .title {
         font-size: 3vw;
-        color: var(--bgColor);
     }
 
     .menu-btn {
