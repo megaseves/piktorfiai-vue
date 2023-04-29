@@ -14,14 +14,12 @@
       <div class="gallery-container">
 
 
-          <div v-for="(image, index) in imageUrls" :key="index" v-bind:class="index === 2 || index === 3 || index === 12 || index === 13 ? 'image-card twoSpace' : 'image-card'" @click="showBigPicture(index)">
+          <div v-for="(image, index) in imageUrls.slice(0, sliceIndex)" :key="index" v-bind:class="index === 2 || index === 3 || index === 12 || index === 13 ? 'image-card twoSpace' : 'image-card'" @click="showBigPicture(index)">
               <div class="image-detail">
                   <h4>Megtekintés</h4>
               </div>
               <img :src="image" :alt="'image' + (index+1)">
           </div>
-
-
 
 <!--          <div class="image-card" @click="showBigPicture(0)">
               <div class="image-detail">
@@ -43,6 +41,8 @@
           </div>-->
 
       </div>
+      <button class="show-all-list" @click="showAllImage">Összes megtekintése</button>
+      <button class="show-all-list close-btn hidden" @click="closeAllImage"><font-awesome-icon :icon="['fas', 'chevron-up']" /></button>
   </div>
 </template>
 
@@ -52,7 +52,8 @@ import {ref, watchEffect} from "vue";
 export default {
     data() {
       return {
-          imageUrls: ['/gallery/image1.jpg', '/gallery/image2.jpg', '/gallery/image3.jpg', '/gallery/image4.jpg', '/gallery/image5.jpg', '/gallery/image8.jpg', '/gallery/image9.jpg', '/gallery/image10.jpg', '/gallery/image11.jpg', '/gallery/image12.jpg', '/gallery/image13.jpg', '/gallery/image14.jpg', '/gallery/image15.jpg', '/gallery/image16.jpg', '/gallery/image17.jpg', '/gallery/image18.jpg', '/gallery/image19.jpg', '/gallery/image20.jpg', '/gallery/image21.jpg', '/gallery/image22.jpg']
+          imageUrls: ['/gallery/image1.jpg', '/gallery/image2.jpg', '/gallery/image3.jpg', '/gallery/image4.jpg', '/gallery/image5.jpg', '/gallery/image8.jpg', '/gallery/image9.jpg', '/gallery/image10.jpg', '/gallery/image11.jpg', '/gallery/image12.jpg', '/gallery/image13.jpg', '/gallery/image14.jpg', '/gallery/image15.jpg', '/gallery/image16.jpg', '/gallery/image17.jpg', '/gallery/image18.jpg', '/gallery/image19.jpg', '/gallery/image20.jpg', '/gallery/image21.jpg', '/gallery/image22.jpg'],
+          sliceIndex: 6
       }
     },
     setup() {
@@ -65,8 +66,6 @@ export default {
     name: "Gallery",
     methods: {
         showBigPicture(index) {
-            const stepForward = document.querySelector('.stepForward');
-            const stepBack = document.querySelector('.stepBack');
 
             const bigPicture = document.querySelector('.show-big-picture');
             if (bigPicture.classList.contains('hidden')) {
@@ -119,16 +118,34 @@ export default {
                 this.imageIndex--;
             }
         },
+        showAllImage() {
+            const showAllButton = document.querySelector('.show-all-list');
+            const closeButton = document.querySelector('.close-btn');
+            showAllButton.classList.add('hidden');
+            closeButton.classList.remove('hidden');
+            this.sliceIndex = this.imageUrls.length-1 + 1;
+
+        },
+        closeAllImage() {
+            const showAllButton = document.querySelector('.show-all-list');
+            const closeButton = document.querySelector('.close-btn');
+            showAllButton.classList.remove('hidden');
+            closeButton.classList.add('hidden');
+            this.sliceIndex = 6;
+        },
+
     }
 }
 </script>
 
 <style scoped>
-.container {
+#gallery {
     width: 100%;
     display: flex;
     justify-content: center;
     margin-bottom: 20vw;
+    flex-direction: column;
+    align-items: center;
 }
 .gallery-container {
     width: 86vw;
@@ -273,8 +290,38 @@ export default {
     flex-basis: 43.7%;
 }
 
+
+
+
+/*ÖSSZES MEGTEKINTÉSE BUTTON*/
+
+.show-all-list {
+    background-color: var(--bgColor);
+    border-radius: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1vw;
+    margin-top: 1vw;
+    cursor: pointer;
+    color: var(--textColor);
+    font-size: 1vw;
+    font-weight: bold;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.show-all-list:hover {
+    background-color: #435379;
+}
+.show-all-list:active {
+    background-color: #2f3d57;
+}
+
 .last-skip-icon {
     color: #c85000;
+}
+.hidden {
+    display: none;
 }
 
 </style>
