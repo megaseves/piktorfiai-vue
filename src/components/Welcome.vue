@@ -285,6 +285,7 @@ export default {
         width: 100%;
         background-color: var(--bgColor);
         margin: 0;
+        top: -1vw;
     }
     .container {
         display: flex;
@@ -340,7 +341,7 @@ export default {
         background-color: white;
 
         width: 100%;
-        top: 0;
+        top: -1vw;
         left: 0;
     }
 
@@ -348,6 +349,57 @@ export default {
         display: block;
         width: 100%;
         top: -0.5vw;
+    }
+
+}
+
+
+/*  TABLET VIEW 2  */
+@media screen and (max-width: 900px) {
+    .welcome-container {
+        padding-top: 0;
+    }
+    .container-header h1 {
+        font-size: 7vw;
+    }
+    .container-header h3 {
+        font-size: 4.5vw;
+    }
+    .phone {
+        margin: 1.6vw 0;
+        font-size: 2.2vw;
+        padding: 2vw;
+    }
+    .call-us {
+        width: 60vw;
+    }
+    .call-us p {
+        font-size: 2.2vw;
+    }
+}
+
+
+/*  PHONE VIEW  */
+@media screen and (max-width: 500px) {
+    .welcome-container {
+        padding-top: 0;
+    }
+    .container-header h1 {
+        font-size: 8vw;
+    }
+    .container-header h3 {
+        font-size: 5.4vw;
+    }
+    .phone {
+        margin-top: 1.5vw;
+        font-size: 3vw;
+        padding: 2.4vw;
+    }
+    .call-us {
+        width: 80vw;
+    }
+    .call-us p {
+        font-size: 3vw;
     }
 
 }

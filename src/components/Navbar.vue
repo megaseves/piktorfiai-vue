@@ -7,6 +7,11 @@
           <div class="menu-btn" @click="$emit('scroll-to-gallery')" >Galéria</div>
           <div class="menu-btn">Elérhetőség</div>
       </div>
+      <div class="phone-menu">
+          <div class="menu-icon">
+              <font-awesome-icon class="phone-menu-btn" :icon="['fas', 'bars']" />
+          </div>
+      </div>
   </div>
 </template>
 
@@ -18,6 +23,10 @@ export default {
 </script>
 
 <style scoped>
+
+.phone-menu {
+    display: none;
+}
 .container {
     width: 100vw;
     height: 20vh;
@@ -49,7 +58,7 @@ export default {
 
 
 
-/*TABLET VIEW*/
+/*  TABLET VIEW  */
 @media screen and (max-width: 1300px) {
     .container {
         background-color: var(--bgColor);
@@ -67,6 +76,48 @@ export default {
     .menu-btn:hover {
         color: var(--bgColor);
     }
+}
+
+/*  TABLET VIEW 2 */
+@media screen and (max-width: 900px) {
+    .container {
+        max-height: 13vh;
+        padding: 0 8vw;
+    }
+    .title {
+        font-size: 3vw;
+    }
+
+    .menu-btn {
+        padding: 2vw;
+        border-radius: 0.5vw;
+        font-size: 2vw;
+    }
+    .menu-btn:hover {
+        color: var(--bgColor);
+    }
+}
+
+/*  PHONE VIEW  */
+@media screen and (max-width: 500px) {
+
+    .container {
+        max-height: 13vh;
+        padding: 0 8vw;
+    }
+    .phone-menu {
+      display: block;
+    }
+    .phone-menu-btn {
+        font-size: 6vw;
+    }
+    .title {
+        font-size: 6vw;
+    }
+    .menu {
+        display: none;
+    }
+
 }
 
 </style>
