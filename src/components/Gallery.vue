@@ -13,7 +13,17 @@
 
       <div class="gallery-container">
 
-          <div class="image-card" @click="showBigPicture(0)">
+
+          <div v-for="(image, index) in imageUrls" :key="index" v-bind:class="index === 2 || index === 3 || index === 12 || index === 13 ? 'image-card twoSpace' : 'image-card'" @click="showBigPicture(index)">
+              <div class="image-detail">
+                  <h4>Megtekintés</h4>
+              </div>
+              <img :src="image" :alt="'image' + (index+1)">
+          </div>
+
+
+
+<!--          <div class="image-card" @click="showBigPicture(0)">
               <div class="image-detail">
                   <h4>Megtekintés</h4>
               </div>
@@ -27,10 +37,10 @@
           </div>
           <div class="image-card" @click="showBigPicture(2)">
               <div class="image-detail">
-                <h4>Megtekintés</h4>
+                    <h4>Megtekintés</h4>
               </div>
               <img src="/gallery/image3.jpg" alt="image3">
-          </div>
+          </div>-->
 
       </div>
   </div>
@@ -42,7 +52,7 @@ import {ref, watchEffect} from "vue";
 export default {
     data() {
       return {
-          imageUrls: ['/gallery/image1.jpg', '/gallery/image2.jpg', '/gallery/image3.jpg']
+          imageUrls: ['/gallery/image1.jpg', '/gallery/image2.jpg', '/gallery/image3.jpg', '/gallery/image4.jpg', '/gallery/image5.jpg', '/gallery/image8.jpg', '/gallery/image9.jpg', '/gallery/image10.jpg', '/gallery/image11.jpg', '/gallery/image12.jpg', '/gallery/image13.jpg', '/gallery/image14.jpg', '/gallery/image15.jpg', '/gallery/image16.jpg', '/gallery/image17.jpg', '/gallery/image18.jpg', '/gallery/image19.jpg', '/gallery/image20.jpg', '/gallery/image21.jpg', '/gallery/image22.jpg']
       }
     },
     setup() {
@@ -121,25 +131,27 @@ export default {
     margin-bottom: 20vw;
 }
 .gallery-container {
-    width: 83vw;
+    width: 86vw;
     //border: 1px solid red;
     display: flex;
-    gap: 2vw;
+    gap: 1vw;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .image-card {
-    width: 25vw;
-    height: 60vh;
+    width: 20vw;
+    height: 38vh;
     background-color: white;
     //border: 1px solid pink;
     box-shadow: 6px 6px 16px -6px rgba(0,0,0,0.59);
     -webkit-box-shadow: 6px 6px 16px -6px rgba(0,0,0,0.59);
     -moz-box-shadow: 6px 6px 16px -6px rgba(0,0,0,0.59);
     overflow: hidden;
+    flex-basis: 21.25%;
 }
 .image-card img {
     width: 100%;
-    height: 62vh;
+    height: 40vh;
     object-fit: cover;
     top: 0;
     transition: top 250ms;
@@ -255,6 +267,10 @@ export default {
 }
 .icon:hover {
     color: white;
+}
+
+.twoSpace {
+    flex-basis: 43.7%;
 }
 
 .last-skip-icon {
