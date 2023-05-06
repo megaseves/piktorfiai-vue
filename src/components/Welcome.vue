@@ -5,7 +5,7 @@
                 <h1>Ingyenes helyszíni</h1>
                 <h3>felmérés és árajánlat!</h3>
 
-                <button class="phone">30 / 882 3087</button>
+                <a href="tel:+36308823087" class="phone">30 / 882 3087</a>
 
                 <div class="call-us">
                     <p>A szobafestéstől a parkettázáson át, egészen a kerti faházak építéséig állunk kedves ügyfeleink rendelkezésére!</p>
