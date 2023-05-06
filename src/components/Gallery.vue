@@ -149,7 +149,7 @@ export default {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 20vw;
+    margin-bottom: 2vw;
     flex-direction: column;
     align-items: center;
 }
@@ -375,6 +375,19 @@ export default {
         flex-basis: 61%;
     }
 
+}
+@media screen and (max-width: 500px) {
+    .show-all-list {
+        font-size: 4vw;
+        width: 80vw;
+        border-radius: 1vw;
+        padding: 4vw 0;
+        background-color: var(--textColor);
+        color: var(--bgColor);
+    }
+    .show-all-list:hover {
+        background-color: var(--textColor);
+    }
 }
 
 </style>

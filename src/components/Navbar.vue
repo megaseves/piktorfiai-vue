@@ -3,9 +3,9 @@
       <h2 class="title">Piktor Fiai bt.</h2>
 
       <div class="menu">
-          <div class="menu-btn">Rólunk</div>
+          <div class="menu-btn" @click="$emit('scroll-to-information')">Rólunk</div>
           <div class="menu-btn" @click="$emit('scroll-to-gallery')" >Galéria</div>
-          <div class="menu-btn">Elérhetőség</div>
+          <div class="menu-btn" @click="$emit('scroll-to-information')">Elérhetőség</div>
       </div>
       <div class="phone-menu">
           <div class="menu-icon">

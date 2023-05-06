@@ -9,7 +9,7 @@
 
                 <div class="call-us">
                     <p>A szobafestéstől a parkettázáson át, egészen a kerti faházak építéséig állunk kedves ügyfeleink rendelkezésére!</p>
-                    <p>Kérjen árajánlatot telefonon vagy e-mailben a <span class="email">piktorfiaibt@gmail.com</span> címen!</p>
+                    <p>Kérjen árajánlatot telefonon vagy e-mailben a <a href="mailto:piktorfiaibt@gmail.com" class="email">piktorfiaibt@gmail.com</a> címen!</p>
                 </div>
             </div>
 
@@ -183,6 +183,7 @@ export default {
 .email {
     color: var(--linkColor);
     cursor: pointer;
+    text-decoration: none;
 }
 
 .container-image {
