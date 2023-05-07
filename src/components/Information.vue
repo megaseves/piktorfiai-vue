@@ -25,7 +25,7 @@
                 </div>
             </a>
 
-            <a class="inf-link" href="https://google.com/">
+            <a class="inf-link" target="_blank" href="https://goo.gl/maps/iKV9zfkGFEbM155j6?coh=178573&entry=tt">
                 <div class="inf-content">
                     <font-awesome-icon class="inf-icon" icon="fa-solid fa-circle-info" />
                     <a class="inf-button"><span class="inf-button-street">Dr. Timaffy László u 2/A 2.em.7a.</span><span class="inf-button-city">Mosonmagyaróvár, Hungary</span></a>
