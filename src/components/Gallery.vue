@@ -1,5 +1,5 @@
 <template>
-    <div class="show-big-picture hidden" @click="closeBigPicture" >
+    <div class="show-big-picture hidden" @click="closeBigPicture" @touchstart="onTouchStart" @touchend="onTouchEnd" >
         <div class="stepControl">
             <div class="stepBack" @click.stop><font-awesome-icon class="icon" :icon="['fas', 'chevron-left']" @click="skipBackImage" /></div>
             <div class="stepForward" @click.stop><font-awesome-icon class="icon" :icon="['fas', 'chevron-right']" @click="skipForwardImage" /></div>
@@ -21,7 +21,7 @@
               <img :src="image" :alt="'image' + (index+1)">
           </div>
 
-          <div v-if="isSmallScreen" v-for="(image, index) in imageUrls.slice(0, smallScreenSliceIndex)" :key="index" v-bind:class="index === 1 || index === 2 ? 'image-card twoSpace' : 'image-card'" @click="showBigPicture(index)">
+          <div v-if="isSmallScreen" v-for="(image, index) in imageUrls.slice(0, smallScreenSliceIndex)" :key="index" v-bind:class="index === 1 || index === 2 ? 'image-card twoSpace' : 'image-card'" @click="showBigPicture(index)" >
               <div class="image-detail">
                   <h4>Megtekintés</h4>
               </div>
@@ -47,7 +47,9 @@ export default {
           imageUrls: ['/gallery/image1.jpg', '/gallery/image2.jpg', '/gallery/image3.jpg', '/gallery/image4.jpg', '/gallery/image5.jpg', '/gallery/image8.jpg', '/gallery/image9.jpg', '/gallery/image10.jpg', '/gallery/image11.jpg', '/gallery/image12.jpg', '/gallery/image13.jpg', '/gallery/image14.jpg', '/gallery/image15.jpg', '/gallery/image16.jpg', '/gallery/image17.jpg', '/gallery/image18.jpg', '/gallery/image19.jpg', '/gallery/image20.jpg', '/gallery/image21.jpg', '/gallery/image22.jpg'],
           sliceIndex: 6,
           smallScreenSliceIndex: 4,
-          isSmallScreen: false
+          isSmallScreen: false,
+          touchStartX: null,
+          touchEndX: null
       }
     },
     setup() {
@@ -66,6 +68,15 @@ export default {
         window.removeEventListener('resize', this.handleResize)
     },
     methods: {
+
+        onTouchStart(event) {
+            this.touchStartX = event.touches[0].clientX
+            console.log(this.touchStartX)
+        },
+        onTouchEnd(event) {
+            this.touchEndX = event.changedTouches[0].clientX
+            this.handleSwipe()
+        },
         showBigPicture(index) {
 
             const bigPicture = document.querySelector('.show-big-picture');
@@ -74,19 +85,6 @@ export default {
                 bigPicture.classList.remove('hidden');
             }
         },
-
-
-        checkIndexForIconDesign() {
-            const stepForward = document.querySelector('.stepForward');
-            const stepBack = document.querySelector('.stepBack');
-
-            if(this.imageIndex === 0) {
-                stepBack.children[0].classList.add('last-skip-icon');
-            } else {
-                stepBack.children[0].classList.remove('last-skip-icon');
-            }
-        },
-
 
         closeBigPicture(event) {
             const stepForward = document.querySelector('.stepForward');
@@ -117,6 +115,16 @@ export default {
                 this.imageIndex = this.imageUrls.length-1;
             } else {
                 this.imageIndex--;
+            }
+        },
+
+        handleSwipe() {
+            if (this.touchStartX - this.touchEndX > 50 && this.imageIndex !== this.imageUrls.length - 1) {
+                // swipe right to left
+                this.imageIndex++
+            } else if (this.touchEndX - this.touchStartX > 50 && this.imageIndex !== 0) {
+                // swipe left to right
+                this.imageIndex--
             }
         },
         showAllImage() {
