@@ -1,29 +1,10 @@
-# piktorfiai-vue
+# Piktor Fiai Bt.
 
-This template should help get you started developing with Vue 3 in Vite.
+## Link to the website
+You can check the website [here](https://piktorfiai.hu/). (https://piktorfiai.hu/)
 
-## Recommended IDE Setup
+## About the project
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+I made this website for my friend. They also undertake parquet flooring, room painting and the construction of garden wooden houses in Hungary.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+## Gallery
