@@ -1,7 +1,6 @@
 <script setup>
 import Navbar from "@/components/Navbar.vue";
 import Welcome from "@/components/Welcome.vue";
-import Gallery from "@/components/Gallery.vue";
 import Information from "@/components/Information.vue";
 import NewGallery from "@/components/newGallery.vue";
 
