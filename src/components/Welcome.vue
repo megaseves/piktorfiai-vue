@@ -19,9 +19,9 @@
             <div class="card-container">
               <div class="card">
                   <div class="wrapper">
-                      <img src="/welcomeImage.jpg" class="cover-image" alt="picture-cover" />
+                      <img src="/welcomeImage.webp" class="cover-image" alt="picture-cover" />
                   </div>
-                  <img src="/welcomeImage2.png" class="threeD" alt="picture" />
+                  <img src="/welcomeImage2.webp" class="threeD" alt="picture" />
               </div>
 <!--                <div class="hover-container" @mouseover="increaseTop" @mouseleave="decreaseTop" @click="goToGallery" >
                     <div class="image-bottom-border"></div>
